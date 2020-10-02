@@ -6,7 +6,7 @@ RUN wget --quiet "https://wordpress.org/wordpress-4.9.5.zip" \
 && unzip wordpress-4.9.5.zip \
 && cp -R wordpress/* /var/www/html/ \
 && git clone https://github.com/mehdi-wsc/apalia-Wp.git \
-&& cp /apalia-Wp/wp-config.php /var/www/html/wp-config.php 
+&& cp ./apalia-Wp/wp-config.php /var/www/html/wp-config.php 
 
 RUN chown -R www-data:www-data /var/www/html/
 RUN chmod -R 755 /var/www/html/
