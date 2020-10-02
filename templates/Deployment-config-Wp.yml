@@ -1,0 +1,31 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: wordpress
+  namespace: wordp
+spec:
+  selector:
+    app: wordpress
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+        - name: wordpress
+          env:
+            - name: WORDPRESS_DB_HOST
+              value: 'db:3306'
+            - name: WORDPRESS_DB_USER
+              value: wordpress
+            - name: WORDPRESS_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: secret-wordpress
+                  key: WORDPRESS_DB_PASSWORD
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          imagePullPolicy: Always
+          image: 'image-registry.openshift-image-registry.svc:5000/wordp/wordpress'

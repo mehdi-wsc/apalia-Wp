@@ -1,0 +1,43 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: db
+  namespace: wordp
+spec:
+  selector:
+    app: db
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      volumes:
+        - name: pvo1
+          persistentVolumeClaim:
+            claimName: claim1
+      containers:
+        - name: db
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: secret-wordpress
+                  key: MYSQL_ROOT_PASSWORD
+            - name: MYSQL_DATABASE
+              value: wordpress
+            - name: MYSQL_USER
+              value: wordpress
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: secret-wordpress
+                  key: MYSQL_PASSWORD
+          ports:
+            - containerPort: 3306
+              protocol: TCP
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: pvo1
+              mountPath: /var/lib/mysql
+          image: 'mysql:5.7'
