@@ -2,7 +2,7 @@ kind: DeploymentConfig
 apiVersion: apps.openshift.io/v1
 metadata:
   name: wordpress
-  namespace: wordp
+  namespace: wordpress
 spec:
   selector:
     app: wordpress
@@ -28,4 +28,4 @@ spec:
             - containerPort: 8080
               protocol: TCP
           imagePullPolicy: Always
-          image: 'image-registry.openshift-image-registry.svc:5000/wordp/wordpress'
+          image: 'image-registry.openshift-image-registry.svc:5000/wordpress/wordpress'

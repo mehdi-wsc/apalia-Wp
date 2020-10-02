@@ -2,7 +2,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: wordpress
-  namespace: wordp
+  namespace: wordpress
 spec:
   path: /
   to:

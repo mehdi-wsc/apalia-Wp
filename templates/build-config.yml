@@ -2,13 +2,13 @@ apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
   name: 'wordpress'
-  namespace: wordp
+  namespace: wordpress
 ---
 kind: BuildConfig
 apiVersion: build.openshift.io/v1
 metadata:
   name: docker-build
-  namespace: wordp
+  namespace: wordpress
 spec:
   output:
     to:
