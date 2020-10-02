@@ -4,6 +4,11 @@ The repository contains okd templates and docker files to create and install wor
 - OKD cluster
 - No project with name "wordpress" 
 # Usage
+clone the project :
+```
+git clone https://github.com/mehdi-wsc/apalia-Wp.git
+
+```
 Once you login to your cluster just type :
 ```
 ./deploy.sh 
