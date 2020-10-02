@@ -11,6 +11,7 @@ RUN wget --quiet "https://wordpress.org/wordpress-4.9.5.zip" \
 
 RUN chown -R www-data:www-data /var/www/html/
 RUN chmod -R 755 /var/www/html/
+RUN chmod 777 /var/www/html/wp-config.php
 RUN mkdir /var/www/html/wp-content/uploads
 RUN chown -R www-data:www-data /var/www/html/wp-content/uploads
 RUN docker-php-ext-install mysqli
