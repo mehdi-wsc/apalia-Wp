@@ -1,11 +1,13 @@
 FROM php:7.2-apache
 WORKDIR /root
 RUN chmod o+r /etc/resolv.conf
-RUN apt update && apt install -y unzip wget nano
+RUN apt update && apt install -y unzip wget git nano
 RUN wget --quiet "https://wordpress.org/wordpress-4.9.5.zip" \  
 && unzip wordpress-4.9.5.zip \
 && cp -R wordpress/* /var/www/html/ \
-&& mv /var/www/html/wp-config-sample.php /var/www/html/wp-config.php
+&& git clone https://github.com/mehdi-wsc/apalia-Wp.git \
+&& cp /apalia-Wp/wp-config.php /var/www/html/wp-config.php 
+
 RUN chown -R www-data:www-data /var/www/html/
 RUN chmod -R 755 /var/www/html/
 RUN mkdir /var/www/html/wp-content/uploads
