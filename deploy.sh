@@ -10,7 +10,7 @@ oc create -f templates/build-config.yml
 
 oc start-build docker-build
 echo " Building docker image "
-sleep 3m
+sleep 5m
 oc create -f templates/secrets.yml 
 oc create -f templates/Volume.yml 
 oc create -f templates/Deployment-config-db.yml 
