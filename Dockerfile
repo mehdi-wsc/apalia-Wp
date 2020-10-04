@@ -1,18 +1,17 @@
 FROM php:7.2-apache
 WORKDIR /root
+COPY ./wp-config.php .
 RUN chmod o+r /etc/resolv.conf
 RUN apt update && apt install -y unzip wget git nano
 RUN wget --quiet "https://wordpress.org/wordpress-4.9.5.zip" \  
 && unzip wordpress-4.9.5.zip \
 && cp -R wordpress/* /var/www/html/ \
 && rm /var/www/html/wp-config-sample.php \
-&& git clone https://github.com/mehdi-wsc/apalia-Wp.git \
-&& cp ./apalia-Wp/wp-config.php /var/www/html/wp-config.php 
-
+&& cp wp-config.php /var/www/html/ \
+&& sed -i '/Listen 80/c\Listen 8080' /etc/apache2/ports.conf
 RUN chown -R www-data:www-data /var/www/html/
 RUN chmod -R 755 /var/www/html/
-RUN chmod 777 /var/www/html/wp-config.php
 RUN mkdir /var/www/html/wp-content/uploads
 RUN chown -R www-data:www-data /var/www/html/wp-content/uploads
 RUN docker-php-ext-install mysqli
-RUN sed -i '/Listen 80/c\Listen 8080' /etc/apache2/ports.conf
+
