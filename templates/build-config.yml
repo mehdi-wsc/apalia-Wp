@@ -19,5 +19,10 @@ spec:
     dockerStrategy:
   source:
     type: Git
+    ref: "master"
     git:
       uri: 'https://github.com/mehdi-wsc/apalia-Wp.git'
+  triggers:
+    - type: GitHub
+      github:
+        secret: mysecret
