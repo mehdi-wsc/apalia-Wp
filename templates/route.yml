@@ -1,12 +1,17 @@
-apiVersion: route.openshift.io/v1
 kind: Route
+apiVersion: route.openshift.io/v1
 metadata:
   name: wordpress
   namespace: wordpress
 spec:
-  path: /
+  host: wordpress-wordpress.apps.lab.okd.local
   to:
     kind: Service
     name: wordpress
+    weight: 100
   port:
     targetPort: 8080
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Allow
+  wildcardPolicy: None

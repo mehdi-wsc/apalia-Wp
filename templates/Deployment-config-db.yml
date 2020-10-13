@@ -13,9 +13,9 @@ spec:
         app: db
     spec:
       volumes:
-        - name: pvo1
+        - name: database-volume
           persistentVolumeClaim:
-            claimName: claim1
+            claimName: database-volume
       containers:
         - name: db
           env:
@@ -38,6 +38,6 @@ spec:
               protocol: TCP
           imagePullPolicy: IfNotPresent
           volumeMounts:
-            - name: pvo1
+            - name: database-volume
               mountPath: /var/lib/mysql
           image: 'mysql:5.7'
