@@ -16,7 +16,7 @@ oc new-project wordpress
 ``` 
 Create secrets:
 ```
-oc create -f secret.yml 
+oc create -f secrets.yml 
 ``` 
 Create and start build config: 
 ``` 
@@ -25,7 +25,7 @@ oc start-build docker-build
 ``` 
 Create and launch template: 
 ``` 
-oc create template -f template.yaml
+oc create -f template.yaml
 oc process wordpress-template | oc create -f - 
 
 ``` 
