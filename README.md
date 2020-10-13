@@ -4,19 +4,37 @@ The repository contains okd templates and docker files to create and install wor
 - OKD cluster
 - No project with name "wordpress" 
 # Usage
-clone the project :
+clone the project:
 ```
 git clone https://github.com/mehdi-wsc/apalia-Wp.git
 
 ```
-Once you login to your cluster just type :
+Create New-project: 
 ```
-./deploy.sh 
+oc new-project wordpress
 
+``` 
+Create secrets:
 ```
-and you will have an Wordpress ready to use.
+oc create -f secret.yml 
+``` 
+Create and start build config: 
+``` 
+oc create -f build-config.yml 
+oc start-build docker-build 
+``` 
+Create and launch template: 
+``` 
+oc create template -f template.yaml
+oc process wordpress-template | oc create -f - 
 
-# Cleanup environment 
-To clean your work type 
+``` 
+To get your Url:
 ```
+oc get routes | awk '{ print $2 }' | tail -1
+``` 
+# Cleanup environment To clean our work type 
+``` 
 oc delete project wordpress
+```
+
