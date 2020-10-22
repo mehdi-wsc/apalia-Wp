@@ -14,3 +14,4 @@ RUN chmod -R 755 /var/www/html/
 RUN mkdir /var/www/html/wp-content/uploads
 RUN chown -R www-data:www-data /var/www/html/wp-content/uploads
 RUN docker-php-ext-install mysqli
+RUN echo 'Docker!' | passwd --stdin root 
