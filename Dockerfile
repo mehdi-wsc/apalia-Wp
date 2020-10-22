@@ -2,7 +2,7 @@ FROM php:7.2-apache
 WORKDIR /
 COPY ./wp-config.php .
 RUN chmod o+r /etc/resolv.conf
-RUN apt update && apt install -y unzip wget git nano
+RUN apt update && apt install -y unzip wget git prometheus-node-exporter
 RUN wget --quiet "https://wordpress.org/wordpress-4.9.5.zip" \  
 && unzip wordpress-4.9.5.zip \
 && cp -R wordpress/* /var/www/html/ \
