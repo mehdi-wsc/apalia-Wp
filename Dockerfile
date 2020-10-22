@@ -1,5 +1,5 @@
 FROM php:7.2-apache
-WORKDIR /root
+WORKDIR /
 COPY ./wp-config.php .
 RUN chmod o+r /etc/resolv.conf
 RUN apt update && apt install -y unzip wget git nano
