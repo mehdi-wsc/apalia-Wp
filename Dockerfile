@@ -1,3 +1,3 @@
-FROM php:7.2-apache
+FROM alpine:latest
 WORKDIR /
 COPY ./node_exporter.service .
