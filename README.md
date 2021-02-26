@@ -33,7 +33,8 @@ To get your Url:
 ```
 oc get routes | awk '{ print $2 }' | tail -1
 ``` 
-# Cleanup environment To clean our work type 
+# Cleanup environment 
+To clean our work type:
 ``` 
 oc delete project wordpress
 ```
