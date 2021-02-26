@@ -14,7 +14,7 @@ objects:
       resources:
         requests:
           storage: 1Gi
-      storageClassName: nfs-storage
+      storageClassName: managed-nfs-storage
   - kind: DeploymentConfig
     apiVersion: apps.openshift.io/v1
     metadata:
