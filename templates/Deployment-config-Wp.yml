@@ -29,3 +29,6 @@ spec:
               protocol: TCP
           imagePullPolicy: Always
           image: 'image-registry.openshift-image-registry.svc:5000/wordpress/wordpress'
+          securityContext:
+            runAsUser: 0
+            runAsGroup: 0
