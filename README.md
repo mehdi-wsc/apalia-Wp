@@ -1,7 +1,7 @@
-# Wordpress on OKD
+# Wordpress on ocp
 The repository contains okd templates and docker files to create and install wordpress on openshift cluster
 # requirements
-- OKD cluster
+- OCP cluster
 - No project with name "wordpress" 
 # Usage
 clone the project :
